@@ -1,0 +1,14 @@
+#version 120
+
+// Input from vertex shader
+varying vec4 vColor;
+varying vec3 vNormal;
+
+void main() {
+    // Simple lighting calculation
+    vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
+    float diffuse = max(dot(vNormal, lightDir), 0.0);
+    
+    // Combine with base color
+    gl_FragColor = vColor * (0.3 + 0.7 * diffuse);
+}
